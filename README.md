@@ -2,3 +2,4 @@
 
 #### Team members
 - Igor Kasyanchuk
+- Michael Rudyy
