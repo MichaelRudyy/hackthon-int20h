@@ -4,6 +4,7 @@ import io.powersurfers.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ import static org.junit.Assert.fail;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Ignore
 public class DBTests {
     private final static String TEST_USER_LOGIN = "PowerSurfer_2019";
     private final static String TEST_USER_PASSWORD = "5e340ecd588d1e3fda0bf958e32ba52a";
