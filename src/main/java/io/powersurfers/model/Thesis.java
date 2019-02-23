@@ -8,9 +8,6 @@ import java.time.LocalDateTime;
 @Data
 public class Thesis {
 
-    @Id
-    private String id;
-
     private String text;
 
     private LocalDateTime modificatedAt;
