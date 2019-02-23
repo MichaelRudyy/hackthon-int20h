@@ -16,6 +16,7 @@ import java.util.Collections;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Ignore
 public class Tests {
 
     @Autowired
