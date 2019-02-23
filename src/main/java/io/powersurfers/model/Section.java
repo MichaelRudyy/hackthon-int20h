@@ -3,15 +3,14 @@ package io.powersurfers.model;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-public class Thesis {
-
+public class Section {
     @Id
     private String id;
 
     private String text;
 
-    private LocalDateTime modificatedAt;
+    private Iterable<Sentence> sentences;
 }
