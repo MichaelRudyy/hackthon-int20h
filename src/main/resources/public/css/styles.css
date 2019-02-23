@@ -1,0 +1,72 @@
+#tl-container {
+    margin: 25px 0 80px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#tl-container .d-table-cell {
+    width: 50%;
+}
+
+#tl-header {
+    padding: 15px 0 0 15px;
+    font-weight: 400;
+    font-size: 22px;
+    color: #000;
+}
+
+#tl-container .tl-text {
+    font-size: 20px;
+    border-right: 1px solid #eaeaea;
+}
+
+#tl-container .tl-text, #tl-container .tl-note {
+    padding: 15px;
+    color: #101010;
+}
+
+#tl-container .tl-note {
+    font-size: 16px;
+    color: #4a4a4a;
+}
+
+#tl-container.tl-blurred .tl-text {
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: all 1500ms ease-in 0s;
+}
+
+#tl-container.tl-blurred .tl-text:hover {
+    color: #101010;
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+}
+
+#tl-steps {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    /*border-top: 1px solid #e5fbee;*/
+    background: #FFF;
+}
+
+#tl-steps-points .tl-step-point-wrap {
+    position: relative;
+}
+
+#tl-steps-points .tl-step-point {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -5px;
+    margin-top: -5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #FFF;
+    border: 1px solid #6fbe7d;
+}
+
+
+#tl-steps-points .tl-step-point.completed {
+    background: #6fbe7d;
+}
