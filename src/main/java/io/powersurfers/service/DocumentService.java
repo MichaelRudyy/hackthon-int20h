@@ -41,16 +41,17 @@ public class DocumentService {
 
         List<DocumentResponse.SectionResponse> sectionResponseList = new LinkedList<>();
 
-        for (int i = 0; i < document.getSections().size(); i++) {
+        for (Section section : document.getSections()) {
             DocumentResponse.SectionResponse response1 = new DocumentResponse.SectionResponse();
 
-            response1.setTitle(document.getSections().get(i).getTitle());
-            response1.setNumber(document.getSections().get(i).getNumber());
-            response1.setHref(SectionsRestUrlBuilder.get(document.getId()));
-            response1.setStatus(document.getSections().get(i).getStatus());
+            response1.setTitle(section.getTitle());
+            response1.setNumber(section.getNumber());
+            response1.setHref(SectionsRestUrlBuilder.get(section.getId()));
+            response1.setStatus(section.getStatus());
 
             sectionResponseList.add(response1);
         }
+        response.setSectionHrefs(sectionResponseList);
         return response;
     }
 }

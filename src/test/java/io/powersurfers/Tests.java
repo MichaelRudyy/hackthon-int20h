@@ -4,6 +4,7 @@ import io.powersurfers.data.DocumentRepo;
 import io.powersurfers.data.SectionRepo;
 import io.powersurfers.data.UserRepo;
 import io.powersurfers.model.*;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Ignore
 public class Tests {
 
     @Autowired
@@ -39,45 +41,43 @@ public class Tests {
         user.setEmail("mcrudyy@gmail.com");
 
         Document document = new Document();
-        document.setTitle("title");
+        document.setTitle("Document Title");
 
-        Thesis thesis = new Thesis();
-        thesis.setText("thesis1");
-        thesis.setModificatedAt(LocalDateTime.now());
-
-        Sentence sentence1 = new Sentence();
-        sentence1.setText("sentence1");
-        sentence1.setThesis(thesis);
-
-        ArrayList<Sentence> sentences = new ArrayList<>();
-
-        sentences.add(sentence1);
-        sentences.add(sentence1);
-        sentences.add(sentence1);
-        sentences.add(sentence1);
-
-        Section section = new Section();
-        Section section1 = new Section();
-        section.setSentences(sentences);
-        section1.setSentences(sentences);
-
-        ArrayList<Section> sectionArrayList = new ArrayList<>();
-
-        sectionArrayList.add(section);
-        sectionArrayList.add(section1);
-
-        document.setSections(sectionArrayList);
+        document.setSections(generateSections(2));
+        document.setModificationAt(LocalDateTime.now());
 
         userRepo.save(user);
 
         document.setOwner(user);
 
-        sectionRepo.save(section);
-        sectionRepo.save(section1);
-
         System.out.println(document);
         documentRepo.save(document);
+    }
 
+    private List<Section> generateSections(int count) {
+        List<Section> sections = new LinkedList<>();
+        for (int i = 0; i < count; i++) {
+            Section section = new Section();
+            section.setNumber(i);
+            section.setStatus(Section.Status.PASSED);
+            section.setTitle("Section " + i);
+            section.setSentences(generateSentences(3));
+            sections.add(sectionRepo.save(section));
+        }
+        return sections;
+    }
 
+    private List<Sentence> generateSentences(int count) {
+        List<Sentence> sentences = new LinkedList<>();
+        for (int i = 0; i < count; i++) {
+            Thesis thesis = new Thesis();
+            thesis.setText("Thesis " + i);
+            thesis.setModificatedAt(LocalDateTime.now());
+            Sentence sentence = new Sentence();
+            sentence.setThesis(thesis);
+            sentence.setText("Sentence " + i);
+            sentences.add(sentence);
+        }
+        return sentences;
     }
 }

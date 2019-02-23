@@ -22,7 +22,7 @@ public class DocumentController {
     @GetMapping("/{id}")
     private ResponseEntity<DocumentResponse> getDocumentById(@PathVariable String id) {
         DocumentResponse document = documentService.convertToResponse(documentService.getDocumentById(id));
-        if (document == null) return new ResponseEntity<>(new Document(), HttpStatus.NOT_FOUND);
+        if (document == null) return new ResponseEntity<>(new DocumentResponse(), HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(document, HttpStatus.FOUND);
     }
 
