@@ -5,18 +5,41 @@ export default class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            documents: [
-                {id: 1, title: 'М. Е. Вадимовна "Одно чудо на всю жизнь"', preview: 'Ого, такой вот вопросик. Прямо садись и рассказывай всю свою жизнь!<br/> Значит, во-первых (хронологически) — за то, что сообщили мне некоторую веру в себя. Когда ты начинающий, робкий новичок и тебе авторитетный, искушенный в своем деле мастер говорит, что у тебя получается — это создает неслыханной силы импульс. Во-вторых, за среду. Эльга Львовна вовсю приобщала нас к среде взрослых, профессиональных переводчиков, да и нас самих, неофитов, превращала в группу единомышленников, поглощенных общим делом и вообще литературой. В ее семинаре при Союзе писателей говорили ведь далеко не только о переводе.', date: '12 Фев. 2019 г.'},
-                {id: 2, title: 'М. Булгаков "Мастер и Маргарита"', preview: 'Однажды весною, в час небывало жаркого заката, в Москве, на Патриарших прудах, появились два гражданина.<br/> Первый из них, одетый в летнюю серенькую пару, был маленького роста, упитан, лыс, свою приличную шляпу пирожком нес в руке, а на хорошо выбритом лице его помещались сверхъестественных размеров очки в черной роговой оправе', date: '4 Дек. 2018 г.'}
-            ],
-            title: 'Document 1'
+            documents: [],
+            title: 'Speechify'
         }
         this.toDocument = this.toDocument.bind(this)
+        this.componentDidMount = this.componentDidMount.bind(this)
     }
 
     componentDidMount() {
         document.title = "Text Learner Dashboard"
-        // pull documents from backend
+        console.log(this.props.match.id);
+        axios.get('http://localhost:8080/api/documents/byUserEmail', {
+            params: {
+                email: 'mcrudyy@gmail.com'
+            }
+        })
+            .then(response => {
+                console.log(response.data)
+                let documents = []
+                response.data.map(document => {
+                    documents.push({
+                            id: document.id,
+                            title: document.title,
+                            preview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            date: document.modificationAt,
+                            sections: document.sectionHrefs}
+                        )
+                })
+                console.log(documents)
+                this.setState({
+                    documents: documents
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     toDocument(id) {

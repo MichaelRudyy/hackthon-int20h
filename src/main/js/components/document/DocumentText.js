@@ -1,24 +1,61 @@
 import React, {Component} from "react";
 import Points from "./Points";
+import axios from "axios";
 
 export default class DocumentText extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sections: [
-                {id: 1, text: 'Ого, такой вот вопросик.', thesis: 'Text of note lorem ipsum blah balh balr\nToo much text'},
-                {id: 2, text: 'Прямо садись и рассказывай всю свою жизнь!', thesis: 'Text of note lorem ipsum blah balh balr\nToo much text'},
-                {id: 3, text: 'Значит, во-первых (хронологически) — за то, что сообщили мне некоторую веру в себя', thesis: 'Text of note lorem ipsum blah balh balr\nToo much text'},
-                {id: 4, text: 'Когда ты начинающий, робкий новичок и тебе авторитетный, искушенный в своем деле мастер говорит, что у тебя получается — это создает неслыханной силы импульс.', thesis: 'Text of note lorem ipsum blah balh balr\nToo much text'},
-                {id: 5, text: 'Во-вторых, за среду.', thesis: 'Text of note lorem ipsum blah balh balr\nToo much text'}
-            ],
-            documentTitle: 'Document 1'
-        }
+            documentTitle: "Section 1",
+            sections: []
+        };
     }
 
     componentDidMount() {
-        document.title = "Text Learner Interface"
-        // pull sections from backend
+        document.title = 'DocumentText';
+        let sections = [];
+        console.log(this.props);
+        axios.get("http://localhost:8080" + this.props.section.href).then(response => {
+            let sents = [];
+            console.log(response.data);
+            for (var i = 0; i < response.data.sentences.length; i++) {
+                let data = response.data.sentences[i];
+                sents.push({
+                    id: data.number,
+                    text: data.text,
+                    thesis: data.thesis.text
+                });
+            }
+            this.setState({
+                sections: sents
+            });
+        });
+        /*this.props.section.map(sectionItem => {
+            axios.get('http://localhost:8080'+item.href, {
+                params: {}
+            })
+                .then(response => {
+                    let text = ""
+                    let thesis = ""
+                    response.data.sectionItem.sentences.map(sentenceItem => {
+                        text += sentenceItem.text+' '
+                        thesis += sentenceItem.thesis.text
+                    })
+                    sections.push({
+                        id: response.data.id,
+                        text: text,
+                        thesis: thesis
+                    })
+                    this.setState({
+                        sections: sections,
+                        documentTitle: this.props.documentTitle
+                    })
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        })*/
+
     }
 
     render() {
