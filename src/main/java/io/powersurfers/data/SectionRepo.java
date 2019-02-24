@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface SectionRepo extends MongoRepository<Section,String> {
     Optional<Section> findById(String id);
+
+    Section findByNumber(int number);
 }

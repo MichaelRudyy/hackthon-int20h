@@ -36,22 +36,26 @@ public class Tests {
     }
 
     @Test
-    public void test() {
+    public void fillInDB() {
         User user = new User();
         user.setName("Mike");
         user.setEmail("mcrudyy@gmail.com");
 
+        userRepo.save(user);
+
+        genDoc(user, 1);
+        genDoc(user, 2);
+    }
+
+    private void genDoc(User user, int i) {
         Document document = new Document();
-        document.setTitle("Document Title");
+        document.setTitle("Document Title" + i);
 
         document.setSections(generateSections(2));
         document.setModificationAt(LocalDateTime.now());
 
-        userRepo.save(user);
-
         document.setOwner(user);
 
-        System.out.println(document);
         documentRepo.save(document);
     }
 
@@ -77,7 +81,9 @@ public class Tests {
             Sentence sentence = new Sentence();
             sentence.setThesis(thesis);
             sentence.setText("Sentence " + i);
+            sentence.setNumber(i);
             sentences.add(sentence);
+            sentence.setNumber(i);
         }
         return sentences;
     }

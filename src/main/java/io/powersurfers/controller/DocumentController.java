@@ -32,7 +32,7 @@ public class DocumentController {
     @GetMapping("/byUserEmail")
     @ResponseStatus(HttpStatus.FOUND)
     private List<DocumentResponse> getDocumentByOwnerEmail(@RequestParam String email) {
-        return documentService.getDocumentByOwnerEmail(email).stream().map(i -> documentService.convertToResponse(i)).collect(Collectors.toList());
+        return documentService.getDocumentsByOwnerEmail(email).stream().map(i -> documentService.convertToResponse(i)).collect(Collectors.toList());
     }
 
     @PostMapping
