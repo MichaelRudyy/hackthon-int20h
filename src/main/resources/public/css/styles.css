@@ -70,3 +70,71 @@
 #tl-steps-points .tl-step-point.completed {
     background: #6fbe7d;
 }
+
+
+/**
+ * Dashboard
+ */
+
+#tld-container {
+}
+
+#tld-list {
+    margin: 15px 10px;
+}
+
+#tld-list .tld-doc {
+    position: relative;
+    width: 220px;
+    height: 280px;
+    margin: 0 25px 25px 0;
+    cursor: pointer;
+}
+
+#tld-list .tld-thumb {
+    position: absolute;
+    top: 5px;
+    bottom: 40px;
+    left: 5px;
+    right: 5px;
+    background: #FFF;
+    border: 1px solid #f2f2f2;
+}
+
+#tld-list .tld-thumb .thumb-text {
+    position: absolute;
+    font-size: 12px;
+    padding: 15px;
+    overflow: hidden;
+    line-height: 22px;
+    color: #7a7a7a;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 15px;
+    text-align: justify;
+}
+
+#tld-list .tld-doc-title {
+    font-size: 14px;
+    position: absolute;
+    font-weight: bold;
+    top: 244px;
+    left: 15px;
+    right: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#tld-list .tld-doc:hover .tld-thumb {
+    border-color: #eaeaea;
+}
+
+#tld-list .tld-doc-date {
+    font-size: 12px;
+    position: absolute;
+    top: 267px;
+    color: #7a7a7a;
+    left: 15px;
+}
