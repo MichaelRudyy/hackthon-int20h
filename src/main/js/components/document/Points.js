@@ -14,13 +14,13 @@ export default class Points extends Component {
              );
          });
         return (
-            <nav id="tl-steps" className="d-table">
-                <div id="tl-steps-points" className="d-table-row">
-                    {nsRender}
-                    <div className="d-table-cell">
-                        <div className="tl-finish-button">Next &raquo;</div>
+            <nav id="tl-steps">
+                <div id="tl-steps-points-middle">
+                    <div id="tl-steps-points-wrap" class="d-table">
+                        <div id="tl-steps-points" class="d-table-row">{nsRender}</div>
                     </div>
                 </div>
+                <div class="tl-finish-button">Next &raquo;</div>
             </nav>
         )
     }
