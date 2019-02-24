@@ -22,14 +22,14 @@ public class SectionController {
     @GetMapping("/{id}")
     private ResponseEntity<Section> getSection(@PathVariable String id) {
         Section section = sectionService.getSectionById(id);
-        if (section == null) return new ResponseEntity<>(new Section(), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(section, HttpStatus.FOUND);
+        if (section == null) return new ResponseEntity<>(new Section(), HttpStatus.OK);
+        return new ResponseEntity<>(section, HttpStatus.OK);
     }
 
     @PatchMapping("/{id}/patchStatus")
     private ResponseEntity changeStatusToPassed(@PathVariable String id, @RequestParam Section.Status to) {
         if (sectionService.changeStatus(id, to)) return new ResponseEntity(HttpStatus.OK);
-        return new ResponseEntity(HttpStatus.NOT_MODIFIED);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/{id}/next")
