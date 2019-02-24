@@ -1,3 +1,7 @@
+.merriweather {
+    font-family: 'Merriweather', serif;
+}
+
 #tl-container {
     margin: 25px 0 80px;
     font-family: 'Open Sans', sans-serif;
@@ -15,6 +19,7 @@
 }
 
 #tl-container .tl-text {
+    position: relative;
     font-size: 20px;
     border-right: 1px solid #eaeaea;
 }
@@ -29,8 +34,7 @@
     color: #4a4a4a;
 }
 
-#tl-container.tl-blurred .tl-text {
-    position: relative;
+#tl-container.tl-blurred .tl-text, #tl-container .tl-text .tl-blurred {
     color: transparent;
     text-shadow: 0 0 10px rgba(0,0,0,0.2);
     transition: all 1500ms ease-in 0s;
@@ -41,17 +45,17 @@
     cursor: pointer;
     width: 24px;
     height: 24px;
-    background: url(icons/microphone.png) no-repeat center center;
+    background: url(./icons/microphone.png) no-repeat center center;
     display: none;
     right: 10px;
 }
 
 #tl-container .tl-text .tl-sound {
-    background-image: url(icons/sound.png);
+    background-image: url(./icons/sound.png);
     right: 34px;
 }
 
-#tl-container.tl-blurred .tl-text:hover {
+#tl-container.tl-blurred .tl-text:hover, #tl-container .tl-text:hover .tl-blurred {
     color: #101010;
     text-shadow: 0 0 0 rgba(255, 255, 255, 0);
 }
