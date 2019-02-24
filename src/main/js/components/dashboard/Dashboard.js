@@ -15,6 +15,7 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
+        document.title = "Text Learner Dashboard"
         // pull documents from backend
     }
 
