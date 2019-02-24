@@ -1,5 +1,6 @@
-package io.powersurfers.model;
+package io.powersurfers.model.document;
 
+import io.powersurfers.model.User;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;

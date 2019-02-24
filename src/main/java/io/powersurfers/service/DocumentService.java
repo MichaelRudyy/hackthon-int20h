@@ -1,14 +1,14 @@
 package io.powersurfers.service;
 
 import io.powersurfers.data.DocumentRepo;
-import io.powersurfers.model.Document;
-import io.powersurfers.model.Section;
+import io.powersurfers.model.User;
+import io.powersurfers.model.document.Document;
+import io.powersurfers.model.document.Section;
 import io.powersurfers.model.response.DocumentResponse;
 import io.powersurfers.util.SectionsRestUrlBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,10 +16,12 @@ import java.util.List;
 public class DocumentService {
 
     private DocumentRepo documentRepo;
+    private UserService userService;
 
     @Autowired
-    public DocumentService(DocumentRepo documentRepo) {
+    public DocumentService(DocumentRepo documentRepo, UserService userService) {
         this.documentRepo = documentRepo;
+        this.userService = userService;
     }
 
     public Document getDocumentById(String id) {
@@ -27,8 +29,12 @@ public class DocumentService {
     }
 
     public Document addDocument(Document document) {
-        System.out.println(document);
         return documentRepo.save(document);
+    }
+
+    public List<Document> getDocumentByOwnerEmail(String email) {
+        User user = userService.getUserByEmail(email);
+        return documentRepo.findByOwner(user);
     }
 
     public DocumentResponse convertToResponse(Document document) {
