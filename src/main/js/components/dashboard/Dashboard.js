@@ -18,8 +18,8 @@ export default class Dashboard extends Component {
         // pull documents from backend
     }
 
-    toDocument() {
-        this.props.history.push("/document")
+    toDocument(id) {
+        return () => this.props.history.push("/document/" + id);
     }
 
     render() {
@@ -32,7 +32,7 @@ export default class Dashboard extends Component {
                     <div id="tld-list">
                         {this.state.documents.map((item, i) => {
                             return (
-                                <div className="tld-doc float-left" key={i} onClick={this.toDocument}>
+                                <div className="tld-doc float-left" key={i} onClick={this.toDocument(item.id)}>
                                     <div className="tld-thumb">
                                         <div className="thumb-text" dangerouslySetInnerHTML={{__html: item.preview.trim()}} />
                                     </div>

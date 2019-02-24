@@ -40,6 +40,10 @@
     text-shadow: 0 0 0 rgba(255, 255, 255, 0);
 }
 
+#tl-container .tl-note-content {
+    border: #FFF;
+}
+
 #tl-steps {
     position: fixed;
     bottom: 0;
@@ -66,11 +70,21 @@
     border: 1px solid #6fbe7d;
 }
 
+#tl-steps-points .tl-finish-button {
+    text-align: center;
+    color: #679f70;
+    cursor: pointer;
+}
+
 
 #tl-steps-points .tl-step-point.completed {
     background: #6fbe7d;
 }
 
+#tl-steps-points .d-table-cell {
+    width: 16.6667%;
+    line-height: 55px;
+}
 
 /**
  * Dashboard
@@ -137,4 +151,62 @@
     top: 267px;
     color: #7a7a7a;
     left: 15px;
+}
+
+/**
+ * Learning Start
+ */
+
+#tls-container, #tlf-container {
+    width: 1000px;
+    margin: 80px auto 0;
+}
+
+#tls-container .tls-title, #tlf-container .tlf-title {
+    font-size: 48px;
+    font-weight: 200;
+    text-align: center;
+}
+
+#tls-container .tls-section {
+    font-size: 17px;
+    line-height: 34px;
+    text-indent: 1em;
+    margin: 40px 0 35px;
+}
+
+#tls-container .tls-start-wrap, #tlf-container .tlf-finish-wrap  {
+    text-align: center;
+}
+
+#tls-container .tls-start-btn, #tlf-container .tlf-finish-btn {
+    display: inline-block;
+    text-align: center;
+    color: #679f70;
+    width: 200px;
+    line-height: 55px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+
+#tls-container .tls-start-btn:focus, #tlf-container .tlf-finish-btn:focus {
+    outline: none;
+}
+
+#tls-container .tls-start-btn:active, #tlf-container .tlf-finish-btn:active {
+    color: #52805a;
+}
+
+/**
+ * Learning finish
+ */
+
+#tlf-container {
+    margin-top: 180px;
+}
+
+#tlf-container .tlf-finish-btn {
+    font-size: 18px;
 }
