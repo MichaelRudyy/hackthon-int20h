@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @org.springframework.data.mongodb.core.mapping.Document(value = "Documents")
@@ -15,11 +16,11 @@ public class Document {
 
     private String title;
 
-    private LocalDateTime modificatedAt;
+    private LocalDateTime modificationAt;
 
     @DBRef
     private User owner;
 
-    /*@DBRef
-    private Iterable<Section> sections;*/
+    @DBRef
+    private List<Section> sections;
 }
