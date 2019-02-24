@@ -6,6 +6,7 @@ import io.powersurfers.model.document.Document;
 import io.powersurfers.model.document.Section;
 import io.powersurfers.model.response.DocumentResponse;
 import io.powersurfers.util.SectionsRestUrlBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class DocumentService {
 
     private DocumentRepo documentRepo;
@@ -20,11 +22,13 @@ public class DocumentService {
 
     @Autowired
     public DocumentService(DocumentRepo documentRepo, UserService userService) {
+        log.debug("DocService Run");
         this.documentRepo = documentRepo;
         this.userService = userService;
     }
 
     public Document getDocumentById(String id) {
+        log.debug("getDocById: " + id);
         return documentRepo.findById(id).orElse(null);
     }
 
@@ -32,9 +36,14 @@ public class DocumentService {
         return documentRepo.save(document);
     }
 
-    public List<Document> getDocumentByOwnerEmail(String email) {
+    public List<Document> getDocumentsByOwnerEmail(String email) {
         User user = userService.getUserByEmail(email);
+        log.debug("getDocByOwner: " + user);
         return documentRepo.findByOwner(user);
+    }
+
+    public Document getDocumentBySectionContains(Section section){
+        return documentRepo.findBySectionsContaining(section);
     }
 
     public DocumentResponse convertToResponse(Document document) {

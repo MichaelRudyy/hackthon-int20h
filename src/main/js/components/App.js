@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Route, Switch, BrowserRouter} from "react-router-dom";
-import Document from './document/Document';
+import Document from "./document/Document";
 import Dashboard from "./dashboard/Dashboard";
 
 export default class App extends Component {

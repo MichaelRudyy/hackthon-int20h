@@ -8,7 +8,7 @@ export default class Points extends Component {
     render() {
         const ns = new Array(5);
         const nsRender = ns.fill(0, 0, 5).map((v, i) => {
-             let completed = i < this.props.step ? 'completed' : '';
+             let completed = i < this.props.stage ? 'completed' : '';
              return (
                  <div className="tl-step-point-wrap d-table-cell" key={i}><div className={"tl-step-point " + completed}/></div>
              );
@@ -20,7 +20,7 @@ export default class Points extends Component {
                         <div id="tl-steps-points" class="d-table-row">{nsRender}</div>
                     </div>
                 </div>
-                <div class="tl-finish-button">Next &raquo;</div>
+                <div class="tl-finish-button" onClick={this.props.onNextStage}>Next &raquo;</div>
             </nav>
         )
     }
