@@ -1,8 +1,7 @@
 import React, {Component} from "react";
-import Points from './Points';
-import axios from "axios";
+import Points from "./Points";
 
-export default class  Document extends Component {
+export default class DocumentText extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,14 +28,12 @@ export default class  Document extends Component {
                     <div id="tl-header">
                         {this.state.documentTitle}
                     </div>
-                    <div className="d-table tl-blurred" id="tl-container">
+                    <div className={"d-table " + this.getBlurred()} id="tl-container">
                         {this.state.sections.map((item, i) => {
                             return (
                                 <div className="d-table-row" key={i}>
-                                    <div className="d-table-cell tl-text" dangerouslySetInnerHTML={{__html: item.text.trim() + "."}}/>
-                                    <div className="d-table-cell tl-note">
-                                        <textarea className="tl-note-content form-control" placeholder="Add note...">{item.thesis.trim()}</textarea>
-                                    </div>
+                                    <div className="d-table-cell tl-text" dangerouslySetInnerHTML={{ __html: this.getSoundIcons() + this.getBluerredText(item.text.trim()) + "."}}></div>
+                                        {this.getNoteRenderElement(item)}
                                 </div>);
                         })}
                     </div>
@@ -44,5 +41,49 @@ export default class  Document extends Component {
                 <Points stage={this.props.stage} onNextStage={this.props.onNextStage}/>
             </div>
         )
+    }
+
+    getNoteRenderElement(item) {
+        if (this.props.stage === 1) {
+            return (
+                <div className="d-table-cell tl-note">
+                    <textarea className="tl-note-content form-control"
+                          placeholder="Add note...">{item.thesis.trim()}</textarea>
+                </div>
+            );
+        } else {
+            const thesis = item.thesis.trim().replace(/\n/g, "<br/>");
+            return (
+                <div className="d-table-cell tl-note" dangerouslySetInnerHTML={{ __html: thesis }}/>
+            );
+        }
+    }
+
+    getSoundIcons() {
+        if (this.props.stage === 2) {
+            return '<div class="float-right tl-sound"></div><div class="float-right tl-microphone"></div>';
+        } else {
+            return '';
+        }
+    }
+
+    getBluerredText(text) {
+        if (this.props.stage === 3) {
+            const words = text.split(" ");
+            for (var i = 2; i < words.length; i += 3) {
+                words[i] = '<span class="tl-blurred">' + words[i] + '</span>';
+            }
+            return words.join(" ");
+        } else {
+            return text;
+        }
+    }
+
+    getBlurred() {
+        if (this.props.stage === 4) {
+            return "tl-blurred";
+        } else {
+            return "";
+        }
     }
 }

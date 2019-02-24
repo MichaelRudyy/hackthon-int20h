@@ -27,7 +27,7 @@ export default class Dashboard extends Component {
         return (
             <div className="container-fluid" id="tld-container-wrap">
                 <div id="tl-header">
-                    {this.state.title}
+                    <div className="merriweather">Speechify</div>
                 </div>
                 <div id="tld-container">
                     <div id="tld-list">
