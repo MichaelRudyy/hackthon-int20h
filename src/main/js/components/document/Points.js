@@ -12,7 +12,7 @@ export default class Points extends Component {
              return (
                  <div className="tl-step-point-wrap d-table-cell" key={i}><div className={"tl-step-point " + completed}/></div>
              );
-         });
+        });
         return (
             <nav id="tl-steps" className="d-table">
                 <div id="tl-steps-points" className="d-table-row">

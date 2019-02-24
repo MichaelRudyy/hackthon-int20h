@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import DocumentStart from "./DocumentStart"
 import DocumentText from "./DocumentText"
+import DocumentFinish from "./DocumentFinish"
 
 export default class  Document extends Component {
     constructor(props) {
@@ -24,6 +25,14 @@ export default class  Document extends Component {
     }
 
     render() {
-        return (this.state.stage === 0 ? <DocumentStart onStart={this.incrementStage.bind(this)}/> : <DocumentText stage={this.state.stage} onNextStage={this.incrementStage}/>)
+        if (this.state.stage === 0) {
+            return <DocumentStart onStart={this.incrementStage.bind(this)}/>
+        }
+        else if (this.state.stage === 6) {
+            return <DocumentFinish/>
+        }
+        else {
+            return <DocumentText stage={this.state.stage} onNextStage={this.incrementStage}/>
+        }
     }
 }
