@@ -3,6 +3,8 @@ package io.powersurfers.model.document;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Data
 @org.springframework.data.mongodb.core.mapping.Document(value = "Sections")
 public class Section {
@@ -15,7 +17,7 @@ public class Section {
 
     private Status status;
 
-    private Iterable<Sentence> sentences;
+    private List<Sentence> sentences;
 
     public enum Status {
         PASSED, ACTIVE, NOTPASSED
