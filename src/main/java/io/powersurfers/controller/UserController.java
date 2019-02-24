@@ -19,7 +19,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     private ResponseEntity<User> getById(@PathVariable String id) {
         User user = userService.getUserById(id);
         if (user == null) return new ResponseEntity<>(new User(), HttpStatus.NOT_FOUND);
@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/byEmail")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     private User getByEmail(@RequestParam String email) {
         return userService.getUserByEmail(email);
     }

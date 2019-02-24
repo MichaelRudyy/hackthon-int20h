@@ -25,18 +25,18 @@ public class DocumentController {
     @GetMapping("/{id}")
     private ResponseEntity<DocumentResponse> getDocumentById(@PathVariable String id) {
         DocumentResponse document = documentService.convertToResponse(documentService.getDocumentById(id));
-        if (document == null) return new ResponseEntity<>(new DocumentResponse(), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(document, HttpStatus.FOUND);
+        if (document == null) return new ResponseEntity<>(new DocumentResponse(), HttpStatus.OK);
+        return new ResponseEntity<>(document, HttpStatus.OK);
     }
 
     @GetMapping("/byUserEmail")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     private List<DocumentResponse> getDocumentByOwnerEmail(@RequestParam String email) {
         return documentService.getDocumentsByOwnerEmail(email).stream().map(i -> documentService.convertToResponse(i)).collect(Collectors.toList());
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     private Document addDocument(@RequestBody Document document) {
         return documentService.addDocument(document);
     }

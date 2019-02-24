@@ -30,14 +30,34 @@
 }
 
 #tl-container.tl-blurred .tl-text {
+    position: relative;
     color: transparent;
     text-shadow: 0 0 10px rgba(0,0,0,0.2);
     transition: all 1500ms ease-in 0s;
 }
 
+#tl-container .tl-text .tl-microphone, #tl-container .tl-text .tl-sound {
+    position: absolute;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background: url(icons/microphone.png) no-repeat center center;
+    display: none;
+    right: 10px;
+}
+
+#tl-container .tl-text .tl-sound {
+    background-image: url(icons/sound.png);
+    right: 34px;
+}
+
 #tl-container.tl-blurred .tl-text:hover {
     color: #101010;
     text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+}
+
+#tl-container .tl-text:hover .tl-microphone, #tl-container .tl-text:hover .tl-sound  {
+    display: block;
 }
 
 #tl-container .tl-note-content {
@@ -49,20 +69,30 @@
     bottom: 0;
     width: 100%;
     height: 55px;
-    /*border-top: 1px solid #e5fbee;*/
     background: #FFF;
 }
 
-#tl-steps-points .tl-step-point-wrap {
-    position: relative;
+#tl-steps-points-middle {
+    position: absolute;
+    top: 0;
+    left:0;
+    bottom: 0;
+    right: 180px;
+}
+
+#tl-steps-points-wrap {
+    margin: 0 auto;
+    height: 100%;
+    width: 80%;
+}
+
+.tl-step-point-wrap {
+    line-height: 55px;
+    text-align: center;
 }
 
 #tl-steps-points .tl-step-point {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -5px;
-    margin-top: -5px;
+    display: inline-block;
     width: 11px;
     height: 11px;
     border-radius: 50%;
@@ -70,7 +100,12 @@
     border: 1px solid #6fbe7d;
 }
 
-#tl-steps-points .tl-finish-button {
+#tl-steps .tl-finish-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 55px;
+    width: 180px;
     text-align: center;
     color: #679f70;
     cursor: pointer;
