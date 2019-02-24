@@ -1,8 +1,6 @@
 package io.powersurfers.controller;
 
-import io.powersurfers.data.SectionRepo;
-import io.powersurfers.model.Section;
-import io.powersurfers.model.User;
+import io.powersurfers.model.document.Section;
 import io.powersurfers.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

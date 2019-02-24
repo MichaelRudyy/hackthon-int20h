@@ -4,7 +4,10 @@ import io.powersurfers.data.DocumentRepo;
 import io.powersurfers.data.SectionRepo;
 import io.powersurfers.data.UserRepo;
 import io.powersurfers.model.*;
-import org.junit.Ignore;
+import io.powersurfers.model.document.Document;
+import io.powersurfers.model.document.Section;
+import io.powersurfers.model.document.Sentence;
+import io.powersurfers.model.document.Thesis;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 

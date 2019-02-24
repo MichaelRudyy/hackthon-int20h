@@ -1,7 +1,6 @@
-package io.powersurfers.model;
+package io.powersurfers.model.document;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 @Data
 public class Sentence {

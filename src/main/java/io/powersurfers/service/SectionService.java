@@ -1,8 +1,7 @@
 package io.powersurfers.service;
 
 import io.powersurfers.data.SectionRepo;
-import io.powersurfers.model.Document;
-import io.powersurfers.model.Section;
+import io.powersurfers.model.document.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

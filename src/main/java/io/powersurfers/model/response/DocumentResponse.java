@@ -1,11 +1,10 @@
 package io.powersurfers.model.response;
 
-import io.powersurfers.model.Section;
+import io.powersurfers.model.document.Section;
 import io.powersurfers.model.User;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.net.URL;
 import java.time.LocalDateTime;
 
 @Data
